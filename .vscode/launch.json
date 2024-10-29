@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+         {
+            "name": "Python: arguments Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                "--hostnamev1", "localhost",
+                "--usernamev1", "skybadger",
+                "--portv1",     "5950",
+                "--passwordv1", "alltooeasy",
+                "--hostnamev2", "localhost",
+                "--portv2",     "5951",
+                "--usernamev2", "skybadger",
+                "--passwordv2", "alltooeasy",
+                "--guideport",  "4400",
+                "--platesolver", "c:\\program files\\astap\\astapcli.exe -f \"temp.fit\" -fov 0.358222 -z 0 -s 500 -r 30 -ra 22.194631 -spd 76.993297 -m 1.5"
+
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

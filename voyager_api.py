@@ -25,6 +25,7 @@ class VoyagerClient(threading.Thread):
         super(VoyagerClient, self).__init__(group=group, target=target, name=name, *args, **kwargs, daemon=True)
         self.host = host
         self.port = port
+
         self.client_id = client_id
 
         if not self.client_id:
@@ -84,6 +85,7 @@ class VoyagerClient(threading.Thread):
     def run(self):
         log.info("Connecting")
         self.sock.connect((self.host, self.port))
+
         while True:
             try:
                 data = self.sock.recv(1024).decode()
@@ -133,7 +135,7 @@ class VoyagerClient(threading.Thread):
                             self._handle_log(dcm)
                             self._send_heartbeat()
                         elif event == 'ShutDown':
-                            log.warn('Received shutdown signa from host. Closing connection')
+                            log.warn('Received shutdown signal from host. Closing connection')
                             self.sock.close()
                             return
                         else:
@@ -327,7 +329,7 @@ class VoyagerCommandWrapper(object):
             503: 'VOYAGER General STATUS - Action Stopped',
             504: 'VOYAGER General STATUS - Undefined (just started Voyager ... nothing defined)',
             505: 'VOYAGER General STATUS - Warning (some minor error from action or thread raised)',
-            506: 'VOYAGER General STATUS - Unknow (Internal Automa cannot understand what asked to Voyager)'
+            506: 'VOYAGER General STATUS - Unknown (Internal Automa cannot understand what asked to Voyager)'
         }
 
         self.remote_action_results = {
@@ -514,7 +516,8 @@ def print_jpg_info(message):
     print("***\n***\n***\n***\n***")
 
 
-if __name__ == "__main__":
+"""
+ if __name__ == "__main__":
     setup_logging(True)
 
     client = VoyagerClient('172.16.50.50', 5950)
@@ -524,4 +527,4 @@ if __name__ == "__main__":
 
     client.cmd.set_logs('enable')
     client.cmd.set_dashboard('enable')
-
+"""
